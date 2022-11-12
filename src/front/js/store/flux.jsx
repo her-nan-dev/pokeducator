@@ -24,53 +24,45 @@ const getState = ({ getStore, getActions, setStore }) => {
       login: async (username, password) => {
         const store = getStore();
 
-
-        const resp =  fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/login/"+username+"/"+password
-     
-          
+        const resp = fetch(
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/login/" +
+            username +
+            "/" +
+            password
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
-          
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_id", data.user_id);
- 
+
             setStore({ token: data.token });
             setStore({ user_id: data.user_id });
           });
-
       },
       votes: async () => {
         const store = getStore();
-        const resp =  fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/votes"
+        const resp = fetch(
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/votes"
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
-
             setStore({ votes_pokemons: data.votes });
           });
-
       },
       getProfile: () => {
-        
-        
         const token = localStorage.token;
-        console.log(token)
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/protected",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/protected",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.token,
+              Authorization: "Bearer " + token,
             },
-           
           }
         )
           .then((resp) => {
@@ -78,12 +70,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .then((data) => {
             data.msg ? "" : getActions().idStorage(localStorage.user_id);
-            
+
             return setStore({ user: data });
           });
       },
       pokemonFindDb: () => {
-        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
+        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=905")
           .then((response) => response.json())
           .then((data) => {
             data.results.map((pokemon) => {
@@ -132,7 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 evoluciones.chain.evolves_to[0]?.evolves_to[0]
                                   ?.species?.name
                               )
-                            :""
+                            : console.log(evoluciones.chain);
                         });
 
                       evolution = { evolution: evol };
@@ -179,8 +171,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (a.id < b.id) return -1;
           return 0;
         });
-
-        console.log(sortedData.length);
 
         sortedData.map((pokemon) => {
           let description = pokemon.description;
@@ -246,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createPokemon",
+            "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -303,7 +293,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createItem",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -323,7 +313,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       saveDbonStore: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/store"
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/store"
         )
           .then((response) => response.json())
           .then((store) => {
@@ -355,7 +345,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addAll: () => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/storeid/" +
             1
         )
           .then((response) => response.json())
@@ -376,7 +366,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/allmovabi/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -392,7 +382,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       addequipofus: (pokemon_fusion_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/addequipofus",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addequipofus",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -401,11 +391,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_fusion_id: pokemon_fusion_id,
               num: num,
             }),
-          })
+          }
+        );
       },
       addequipo: (pokemon_id, num) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/addequipo",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addequipo",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -414,12 +405,13 @@ const getState = ({ getStore, getActions, setStore }) => {
               pokemon_id: pokemon_id,
               num: num,
             }),
-          })
+          }
+        );
       },
-      
+
       FindOneFusion: (pokemon_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/allmovabifus/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/allmovabifus/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -428,14 +420,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             for (let i in pokemon.pokemon.stats) {
               stat.push(pokemon.pokemon.stats[i]);
             }
-            console.log(pokemon)
+            console.log(pokemon);
             pokemon.pokemon.stats = stat;
             setStore({ single_fusion_data: pokemon });
           });
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/item/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/item/" +
             item_id
         )
           .then((response) => response.json())
@@ -445,7 +437,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/move/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -464,12 +456,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       idStorage: (id) => {
         setStore({ user_id: id });
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/storeid/" +
             id
         )
           .then((response) => response.json())
           .then((store) => {
-
             let votes = [];
             store.votes.map((object) => {
               votes.push(object.pokemon_id);
@@ -480,14 +471,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
             setStore({ votes: votes });
             setStore({ favorites: favorites });
-            setStore({ equipos: store.equipos})
+            setStore({ equipos: store.equipos });
           });
       },
       addVote: async (pokemon_id) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/addvote",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addvote",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -507,21 +498,20 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/deletevote/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/deletevote/" +
             pokemon_id +
             "/" +
             user_id
         )
           .then((response) => response.json())
           .then((store) => {
-       
             setStore({ votes: store.votes });
           });
       },
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/deletefavorite/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/deletefavorite/" +
             pokemon_id +
             "/" +
             user_id
@@ -536,7 +526,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/addfavorite",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addfavorite",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -554,7 +544,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/ability/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -585,7 +575,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       saveMoveonDb: () => {
         //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
-        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=100")
+        fetch("https://pokeapi.co/api/v2/move/?offset=200&limit=300")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
@@ -630,7 +620,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createMove",
+              "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -675,7 +665,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createNature",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -721,7 +711,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-cristiiangb-pokeducator-7yne1ttdf09.ws-eu75.gitpod.io/api/createAbility",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },

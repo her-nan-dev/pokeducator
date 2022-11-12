@@ -96,150 +96,149 @@ const PokeducatorPokemons = () => {
               </button>
             </div>
           </div>
-          <div className="pokegallery">
-            {pokemons?.slice(number, number + 52).map((pokemon, i) => (
-              <div className="col-md-3" id={pokemon.id} key={pokemon.id}>
-                <div className="card bg-light m-4 cardPokemon">
-                  <a href={`/pokemon/${pokemon.id}`}>
-                    <img
-                      style={{
-                        width: "100px",
-                        height: "100px",
-                      }}
-                      className="img-fluid pokemonCardImg mt-3"
-                      src={pokemon.img}
-                      alt={pokemon.name}
-                    />
-                  </a>
-                  <div className="">
-                    <h5 className="nombrePokemon">{pokemon.name}</h5>
-                    <h6>
-                      {pokemon.type.map((tipo, i) =>
-                        tipo == "normal" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={normal_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "fighting" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={lucha_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "flying" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={volador_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "poison" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={veneno_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "ground" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={tierra_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "rock" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={roca_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "ghost" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={fantasma_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "steel" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={acero_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "fire" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={fuego_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "water" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={agua_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "grass" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={planta_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "electric" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={electrico_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "psychic" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={psiquico_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "ice" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={hielo_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "dragon" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={dragon_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "dark" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={siniestro_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "fairy" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={hada_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "unknown" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={desconocido_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "shadow" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={sombra_img}
-                            alt="normal"
-                          />
-                        ) : tipo == "bug" ? (
-                          <img
-                            className="tipoImg mx-1"
-                            src={bicho_img}
-                            alt="normal"
-                          />
-                        ) : (
-                          ""
-                        )
-                      )}
-                    </h6>
+          <div className="d-flex flex-wrap justify-content-center">
+            {pokemons?.slice(number, number + 52).map((pokemon) => (
+              <div className="cardPokemon" id={pokemon.id} key={pokemon.id}>
+                <div className="row">
+                  <div>
+                    <a href={`/pokemon/${pokemon.id}`}>
+                      <img
+                        src={pokemon.img}
+                        className="card-img-top img-fluid"
+                        alt={pokemon.name}
+                        style={{ width: "12rem", height: "14rem" }}
+                      />
+                    </a>
+                  </div>
+                </div>
+                <h5>{pokemon.name}</h5>
+                <div className="row">
+                  <div className="justify-content-center">
+                    {pokemon.type.map((tipo, i) =>
+                      tipo == "normal" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={normal_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "fighting" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={lucha_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "flying" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={volador_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "poison" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={veneno_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "ground" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={tierra_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "rock" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={roca_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "ghost" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={fantasma_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "steel" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={acero_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "fire" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={fuego_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "water" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={agua_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "grass" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={planta_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "electric" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={electrico_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "psychic" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={psiquico_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "ice" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={hielo_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "dragon" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={dragon_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "dark" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={siniestro_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "fairy" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={hada_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "unknown" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={desconocido_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "shadow" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={sombra_img}
+                          alt="normal"
+                        />
+                      ) : tipo == "bug" ? (
+                        <img
+                          className="tipoImg m-1"
+                          src={bicho_img}
+                          alt="normal"
+                        />
+                      ) : (
+                        ""
+                      )
+                    )}
                   </div>
                 </div>
               </div>
@@ -251,3 +250,155 @@ const PokeducatorPokemons = () => {
   );
 };
 export default PokeducatorPokemons;
+
+{
+  /* <div className="">
+            {pokemons?.slice(number, number + 52).map((pokemon, i) => (
+              <div className="col-sm-2 col-4" id={pokemon.id} key={pokemon.id}>
+                <div className="card bg-light m-4 cardPokemon">
+                  <a href={`/pokemon/${pokemon.id}`}>
+                    <img
+                      style={{
+                        width: "150px",
+                        height: "150px",
+                      }}
+                      className="img-fluid pokemonCardImg mt-3"
+                      src={pokemon.img}
+                      alt={pokemon.name}
+                    />
+                  </a>
+                  <div className="">
+                    <h5 className="nombrePokemon">{pokemon.name}</h5>
+                    <span>
+                      {pokemon.type.map((tipo, i) =>
+                        tipo == "normal" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={normal_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "fighting" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={lucha_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "flying" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={volador_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "poison" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={veneno_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "ground" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={tierra_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "rock" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={roca_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "ghost" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={fantasma_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "steel" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={acero_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "fire" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={fuego_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "water" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={agua_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "grass" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={planta_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "electric" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={electrico_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "psychic" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={psiquico_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "ice" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={hielo_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "dragon" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={dragon_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "dark" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={siniestro_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "fairy" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={hada_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "unknown" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={desconocido_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "shadow" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={sombra_img}
+                            alt="normal"
+                          />
+                        ) : tipo == "bug" ? (
+                          <img
+                            className="tipoImg m-1"
+                            src={bicho_img}
+                            alt="normal"
+                          />
+                        ) : (
+                          ""
+                        )
+                      )}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div> */
+}
