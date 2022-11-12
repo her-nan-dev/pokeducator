@@ -114,7 +114,7 @@ const PokeducatorPokemons = () => {
                 <h5>{pokemon.name}</h5>
                 <div className="row">
                   <div className="justify-content-center">
-                    {pokemon.type.map((tipo, i) =>
+                    {pokemon.type.map((tipo) =>
                       tipo == "normal" ? (
                         <img
                           className="tipoImg m-1"
