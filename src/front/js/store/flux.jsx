@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
 
         const resp = fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/login/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/login/" +
             username +
             "/" +
             password
@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       votes: async () => {
         const store = getStore();
         const resp = fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/votes"
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/votes"
         )
           .then((resp) => {
             return resp.json();
@@ -56,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getProfile: () => {
         const token = localStorage.token;
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/protected",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/protected",
           {
             method: "GET",
             headers: {
@@ -236,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           const resp = fetch(
-            "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createPokemon",
+            "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createPokemon",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -293,7 +293,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createItem",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createItem",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -313,7 +313,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       saveDbonStore: () => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/store"
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/store"
         )
           .then((response) => response.json())
           .then((store) => {
@@ -345,7 +345,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addAll: () => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/storeid/" +
             1
         )
           .then((response) => response.json())
@@ -366,7 +366,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       FindOnePokemon: (pokemon_id) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/allmovabi/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/allmovabi/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -382,7 +382,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       addequipofus: (pokemon_fusion_id, num) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addequipofus",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/addequipofus",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -396,7 +396,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       addequipo: (pokemon_id, num) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addequipo",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/addequipo",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -411,7 +411,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       FindOneFusion: (pokemon_id) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/allmovabifus/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/allmovabifus/" +
             pokemon_id
         )
           .then((response) => response.json())
@@ -427,7 +427,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneItem: (item_id) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/item/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/item/" +
             item_id
         )
           .then((response) => response.json())
@@ -437,7 +437,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneMove: (move_id) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/move/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/move/" +
             move_id
         )
           .then((response) => response.json())
@@ -456,7 +456,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       idStorage: (id) => {
         setStore({ user_id: id });
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/storeid/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/storeid/" +
             id
         )
           .then((response) => response.json())
@@ -478,7 +478,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addvote",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/addvote",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -498,7 +498,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/deletevote/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/deletevote/" +
             pokemon_id +
             "/" +
             user_id
@@ -511,7 +511,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/deletefavorite/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/deletefavorite/" +
             pokemon_id +
             "/" +
             user_id
@@ -526,7 +526,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
         const resp = await fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/addfavorite",
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/addfavorite",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -544,7 +544,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       FindOneAbility: (ability_id) => {
         fetch(
-          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/ability/" +
+          "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/ability/" +
             ability_id
         )
           .then((response) => response.json())
@@ -620,7 +620,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           setTimeout(() => {
             fetch(
-              "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createMove",
+              "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createMove",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -665,7 +665,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createNature",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createNature",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
@@ -711,7 +711,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .finally(() => {
                   fetch(
-                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu75.gitpod.io/api/createAbility",
+                    "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createAbility",
                     {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },

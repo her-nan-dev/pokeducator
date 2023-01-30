@@ -1,162 +1,164 @@
-.habilidadFusion > h4, .naturalezaFusion > h4{
+.habilidadFusion > h4,
+.naturalezaFusion > h4 {
   font-size: 16px;
 }
 /* .movimientoFusion{
 
 } */
 .pkmn__card {
-	width: 370px;
-	height: 650px;
-	background: white;
-	margin: 1rem auto;
-	padding: 0.5rem 0;
+  width: 370px;
+  height: 650px;
+  background: white;
+  margin: 1rem auto;
+  padding: 0.5rem 0;
 }
 
 .pkmn__container {
-	width: 35rem;
-	height: 39rem;
-	background-image: url("https://raw.githubusercontent.com/kusillus/PokemonGo/gh-pages/IMG/details_type_bg_fire.png");
-	background-size: 100% 100%;
-	margin: 1rem auto;
-	padding-top: 1rem;
-	border-radius: 0.5rem;
+  width: 50rem;
+  height: 40rem;
+  /* background-image: url("https://raw.githubusercontent.com/kusillus/PokemonGo/gh-pages/IMG/details_type_bg_fire.png"); */
+  background-size: 100% 100%;
+  margin: 1rem auto;
+  padding-top: 1rem;
+  border-radius: 0.5rem;
 }
 
 .pkmn__picture {
-	width: 14rem;
-	height: 11.5rem;
-	margin: 0 auto;	
+  width: 14rem;
+  height: 11.5rem;
+  margin: 0 auto;
 }
 
 .pkmn__png {
-	margin-top: -1rem;
+  margin-top: -1rem;
 }
 
-.rowFusion{
-  border-top: #3F4240 1px solid;
-  border-bottom: #3F4240 1px solid;
+.rowFusion {
+  border-top: #3f4240 1px solid;
+  border-bottom: #3f4240 1px solid;
   padding-top: 15px;
-  padding-bottom: 15px ;
+  padding-bottom: 15px;
   margin-bottom: 10px;
 }
-.marginFusion{
+.marginFusion {
   margin-top: auto;
   margin-bottom: auto;
 }
 .pkmn__cp {
-	text-align: center;
-	color: white;
+  text-align: center;
+  color: white;
 }
-
 
 .pkmn__info {
-	width: 27rem;
-	background: white;
-	margin: 0 auto;
-	border-radius: 0.5rem;
-	padding: 1.5rem 0 1rem 0;
+  width: 27rem;
+  background: white;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  padding: 1.5rem 0 1rem 0;
 }
 
-.pkmn__name{
-	width: 100%;
-	text-align: center;
-	font-size: 1.5rem;
+.pkmn__name {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 .size-medium {
-	font-size: 0.8rem;
-	color: #3F4240;
+  font-size: 0.8rem;
+  color: #3f4240;
 }
 
 .pkmn__data {
-	width: 20rem;
-	height: 2rem;
-	display: flex;
-	justify-content: center;
-	margin-bottom: 0.8rem;
-
+  width: 20rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.8rem;
 }
-.pkmn__type, .pkmn__weight, .pkmn__height {
-	width: 5.1rem;
-	text-align: center;
-	font-size: 0.9rem;
-	
+.pkmn__type,
+.pkmn__weight,
+.pkmn__height {
+  width: 5.1rem;
+  text-align: center;
+  font-size: 0.9rem;
 }
 .pkmn__type {
-	width: 5.8rem;
+  width: 5.8rem;
 }
 
 .pkmn__height {
-	border-right: none;
+  border-right: none;
 }
 
 .pkmn___status {
-	width: 18rem;
-	height: 4rem;
-	display: flex;
-	border-top: solid 0.1rem rgba(0, 0, 0, 0.16);
-	padding-top: 0.8rem;
-	margin: 0 auto 0 auto;
+  width: 18rem;
+  height: 4rem;
+  display: flex;
+  border-top: solid 0.1rem rgba(0, 0, 0, 0.16);
+  padding-top: 0.8rem;
+  margin: 0 auto 0 auto;
 }
 
 .text--small {
-	margin-top: 0rem;
-	font-size: 0.7rem;
-	color: #3F4240;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #3f4240;
 }
 
-.status__stardust, .status__candy {
-	width: 9rem;
-	text-align: center;
+.status__stardust,
+.status__candy {
+  width: 9rem;
+  text-align: center;
 }
 .status__candy {
-	width: 10rem;
+  width: 10rem;
 }
 
-
 .pkmn__powerup {
-	width: 18rem;
-	margin: 0 auto;
-	text-align: center;
-	display: flex;
-	background: #E8F0E1;
-	border-radius: 2rem 0.3rem 0.3rem 2rem;
+  width: 18rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  background: #e8f0e1;
+  border-radius: 2rem 0.3rem 0.3rem 2rem;
 }
 
 .nomtop {
-	margin-top: 0.2rem;
-	font-size: 0.7rem;
-	color: #3F4240;	
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  color: #3f4240;
 }
 
 .powerup__text {
-	width: 8rem;
-	height: 2rem;
-	padding-top: 0.5rem;
-	background: #64D39F;
-	border-radius: 2rem;
-	margin-right: 2rem;
-	color: white;
+  width: 8rem;
+  height: 2rem;
+  padding-top: 0.5rem;
+  background: #64d39f;
+  border-radius: 2rem;
+  margin-right: 2rem;
+  color: white;
 }
 
-.powerup__stardust, .powerup__candy {
-	width: 3.5rem;
-	padding-top: 0.6rem;
-	font-size: 0.9rem;
+.powerup__stardust,
+.powerup__candy {
+  width: 3.5rem;
+  padding-top: 0.6rem;
+  font-size: 0.9rem;
 }
 
 .powerup__candy::before {
-	width: 1rem;
-	height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .powerup__stardust::before {
-	height: 0.6rem;
+  height: 0.6rem;
 }
 
 .pkmn__move {
   margin-left: auto;
-  
+
   width: 100%rem;
   margin: 0 auto 0 auto;
   display: flex;
@@ -164,27 +166,27 @@
 }
 
 .move__special::before {
-	content: '';
-	width: 6rem;
-	height: 0.5rem;
-	position: absolute;
-	background: #66B8FA;
-	margin-top: 0.37rem;
-	margin-left: 7rem;
-	border: solid 0.12rem #B8C9FF;
-	border-radius: 0.4rem;
+  content: "";
+  width: 6rem;
+  height: 0.5rem;
+  position: absolute;
+  background: #66b8fa;
+  margin-top: 0.37rem;
+  margin-left: 7rem;
+  border: solid 0.12rem #b8c9ff;
+  border-radius: 0.4rem;
 }
 
 .move--mtop {
-	margin-top: 0;
-	color: #B2B6B4;
-	margin-bottom: 0.5rem;
+  margin-top: 0;
+  color: #b2b6b4;
+  margin-bottom: 0.5rem;
 }
 
-.space{
-	margin-top: 1.2rem;
-	padding-top: 1.2rem;
-	border-top: solid 0.1rem rgba(0, 0, 0, 0.16);
+.space {
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: solid 0.1rem rgba(0, 0, 0, 0.16);
 }
 /* ///////////////// */
 .fusionFoto {
@@ -203,16 +205,15 @@
 
 .center-on-page {
   display: flex;
-    align-items: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 /* Poké Styles */
 .pokeballFusionPage {
-    
   margin-left: auto;
-  margin-right: auto !important; 
+  margin-right: auto !important;
   position: relative;
   width: 100px;
   height: 100px;
@@ -229,8 +230,8 @@
 .pokeballFusionPage:hover {
   transform: scale(1.2);
 }
-.pokeballFusionPage__button:hover{
-    background: #e74c3c;
+.pokeballFusionPage__button:hover {
+  background: #e74c3c;
 }
 .pokeballFusionPage:active {
   transform: scale(1.1);
@@ -238,18 +239,16 @@
 .pokeballFusionPage::before,
 .pokeballFusionPage::after {
   content: "";
-  position: absolute ;
+  position: absolute;
   top: 0px;
   right: 0;
   width: 125px;
   height: 50px;
-  
 }
 .pokeballFusionPage::before {
   background: red;
   width: 100px;
   height: 50%;
-
 }
 .pokeballFusionPage::after {
   top: calc(56% - 10px);
