@@ -228,32 +228,29 @@ const PokeducatorFusion = () => {
 
     actions.addfus(pokeFus);
 
-    const resp = fetch(
-      "https://3001-nanher94-pokeducator-t2h3x66nyck.ws-eu84.gitpod.io/api/createPokemonFusion",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          group_name: Fus_group_name,
-          height: height,
-          weight: weight,
-          ps: ps,
-          atk: atk,
-          defens: defens,
-          sp_defens: sp_defens,
-          sp_atk: sp_atk,
-          spd: spd,
-          img: url,
-          name: name3,
-          type: typesFus,
-          nature: natureFus.id,
-          ability: abilityFus.id,
-          learning: movesFus,
-          father: pokemon.id,
-          mom: pokemon2.id,
-        }),
-      }
-    );
+    const resp = fetch(process.env.BACKEND_URL + "/api/createPokemonFusion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        group_name: Fus_group_name,
+        height: height,
+        weight: weight,
+        ps: ps,
+        atk: atk,
+        defens: defens,
+        sp_defens: sp_defens,
+        sp_atk: sp_atk,
+        spd: spd,
+        img: url,
+        name: name3,
+        type: typesFus,
+        nature: natureFus.id,
+        ability: abilityFus.id,
+        learning: movesFus,
+        father: pokemon.id,
+        mom: pokemon2.id,
+      }),
+    });
 
     setPokemon3(pokeFus);
     setTimeout(() => {
