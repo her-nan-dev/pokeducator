@@ -18,12 +18,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites: [],
       user_id: null,
       equipos: [],
+      teams: [],
+      lastvotes: [],
       votes_pokemons: [],
     },
     actions: {
       login: async (username, password) => {
         const store = getStore();
-
         const resp = fetch(
           process.env.BACKEND_URL + "/api/login/" + username + "/" + password
         )
@@ -40,16 +41,27 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       votes: async () => {
         const store = getStore();
+
         const resp = fetch(process.env.BACKEND_URL + "/api/votes")
+
+        
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
+
+
+            let teams = [data.team1,data.team2,data.team3]
+          
+
+
             setStore({ votes_pokemons: data.votes });
+            setStore({ teams: teams})
           });
       },
       getProfile: () => {
         const token = localStorage.token;
+
         fetch(process.env.BACKEND_URL + "/api/protected", {
           method: "GET",
           headers: {
@@ -57,6 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             Authorization: "Bearer " + token,
           },
         })
+
           .then((resp) => {
             return resp.json();
           })
@@ -64,6 +77,25 @@ const getState = ({ getStore, getActions, setStore }) => {
             data.msg ? "" : getActions().idStorage(localStorage.user_id);
 
             return setStore({ user: data });
+          });
+          fetch(
+          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/lastvotes",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.token,
+            },
+           
+          }
+        )
+          .then((resp) => {
+            return resp.json();
+          })
+          .then((data) => {
+            console.log(data)
+            
+            return setStore({ lastvotes: data.pokemons });
           });
       },
       pokemonFindDb: () => {
@@ -227,6 +259,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             learning.push(mo[mo.length - 2]);
           });
 
+
           const resp = fetch(process.env.BACKEND_URL + "/api/createPokemon", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -253,6 +286,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               weakness: weakness,
             }),
           });
+
         });
       },
 
@@ -281,6 +315,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   img = data.sprites.default;
                 })
                 .finally(() => {
+
                   fetch(process.env.BACKEND_URL + "/api/createItem", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -292,13 +327,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                       cost: cost,
                     }),
                   });
+
                 });
             });
           });
       },
 
       saveDbonStore: () => {
+
         fetch(process.env.BACKEND_URL + "/api/store")
+
           .then((response) => response.json())
           .then((store) => {
             store.pokemons.map((poke) => {
@@ -328,7 +366,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       addAll: () => {
+
         fetch(process.env.BACKEND_URL + "/api/storeid/" + 1)
+
           .then((response) => response.json())
           .then((store) => {
             console.log(store);
@@ -346,7 +386,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       FindOnePokemon: (pokemon_id) => {
+
         fetch(process.env.BACKEND_URL + "/api/allmovabi/" + pokemon_id)
+
           .then((response) => response.json())
           .then((pokemon) => {
             let stat = [];
@@ -359,6 +401,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addequipofus: (pokemon_fusion_id, num) => {
+
         fetch(process.env.BACKEND_URL + "/api/addequipofus", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -379,10 +422,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             num: num,
           }),
         });
+
       },
 
       FindOneFusion: (pokemon_id) => {
+
         fetch(process.env.BACKEND_URL + "/api/allmovabifus/" + pokemon_id)
+
           .then((response) => response.json())
           .then((pokemon) => {
             let stat = [];
@@ -395,14 +441,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       FindOneItem: (item_id) => {
+
         fetch(process.env.BACKEND_URL + "/api/item/" + item_id)
+
           .then((response) => response.json())
           .then((item) => {
             setStore({ single_item_data: item.item });
           });
       },
       FindOneMove: (move_id) => {
+
         fetch(process.env.BACKEND_URL + "/api/move/" + move_id)
+
           .then((response) => response.json())
           .then((move) => {
             setStore({ single_move_data: move.move });
@@ -418,7 +468,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       idStorage: (id) => {
         setStore({ user_id: id });
+
         fetch(process.env.BACKEND_URL + "/api/storeid/" + id)
+
           .then((response) => response.json())
           .then((store) => {
             let votes = [];
@@ -437,6 +489,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       addVote: async (pokemon_id) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
+
         const resp = await fetch(process.env.BACKEND_URL + "/api/addvote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -445,6 +498,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             user_id: id,
           }),
         });
+
 
         const data = await resp.json();
         vote.push(data.vote);
@@ -455,8 +509,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
+
           process.env.BACKEND_URL +
             "/api/deletevote/" +
+
             pokemon_id +
             "/" +
             user_id
@@ -469,8 +525,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
+
           process.env.BACKEND_URL +
             "/api/deletefavorite/" +
+
             pokemon_id +
             "/" +
             user_id
@@ -484,6 +542,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       addfavorite: async (pokemon_id, user_id) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
+
         const resp = await fetch(process.env.BACKEND_URL + "/api/addfavorite", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -493,13 +552,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         });
 
+
         const data = await resp.json();
         favorite.push(data.vote);
         setStore({ favorites: favorite });
         return true;
       },
       FindOneAbility: (ability_id) => {
+
         fetch(process.env.BACKEND_URL + "/api/ability/" + ability_id)
+
           .then((response) => response.json())
           .then((ability) => {
             console.log(ability);
@@ -572,6 +634,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               accuracy = data.accuracy;
             });
           setTimeout(() => {
+
             fetch(process.env.BACKEND_URL + "/api/createMove", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -589,6 +652,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 learning: learning,
               }),
             });
+
           }, 500);
         });
       },
@@ -614,6 +678,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   increase_stat = data.increased_stat.name;
                 })
                 .finally(() => {
+
                   fetch(process.env.BACKEND_URL + "/api/createNature", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -624,6 +689,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                       increase_stat: increase_stat,
                     }),
                   });
+
                 });
             });
           });
@@ -657,6 +723,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                   });
                 })
                 .finally(() => {
+
                   fetch(process.env.BACKEND_URL + "/api/createAbility", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -668,6 +735,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                       learning: learning,
                     }),
                   });
+
                 });
             });
           });

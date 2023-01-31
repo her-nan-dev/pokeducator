@@ -122,7 +122,9 @@ const PokeducatorPerfil = () => {
     // let url = document.getElementById("modalFoto");
     let url = picProfile;
     const resp = await fetch(
+
       process.env.BACKEND_URL + "/api/updateProfilePicture",
+
       {
         method: "PUT",
         headers: {
@@ -561,9 +563,27 @@ const PokeducatorPerfil = () => {
                     <div className="card mb-4 mb-md-0 p-3">
                       <h4>Ultimas votaciones</h4>
                       <div className="d-flex justify-content-around">
-                        <div className="col-3 bg-info">1</div>
-                        <div className="col-3 bg-info">2</div>
-                        <div className="col-3 bg-info">3</div>
+                        {store.lastvotes ? (
+                          <>
+                            {store.lastvotes?.map((vot) => (
+                              <div className="col-3 text-center">
+                      
+                                <a href={"fusion/" + vot.pokemon_id}>
+                              
+                                  <img
+                                    src={vot.img}
+                                    alt=""
+                                    className="fotoPokemonEquipos"
+                                  />
+                                </a>
+                              </div>
+                            ))}
+                          </>
+                        ) : (
+                          <div className="col-3 bg-info">
+                            Aun no hay votaciones
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

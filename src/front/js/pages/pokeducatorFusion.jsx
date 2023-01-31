@@ -228,6 +228,7 @@ const PokeducatorFusion = () => {
 
     actions.addfus(pokeFus);
 
+
     const resp = fetch(process.env.BACKEND_URL + "/api/createPokemonFusion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -251,6 +252,7 @@ const PokeducatorFusion = () => {
         mom: pokemon2.id,
       }),
     });
+
 
     setPokemon3(pokeFus);
     setTimeout(() => {

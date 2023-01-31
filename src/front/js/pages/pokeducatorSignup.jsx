@@ -16,6 +16,7 @@ const PokeducatorSignup = (props) => {
   let navigate = useNavigate();
   // hacer signup en actions y llamar a actions desde aqui
   const handleSignup = async () => {
+
     const resp = await fetch(process.env.BACKEND_URL + "/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,6 +28,7 @@ const PokeducatorSignup = (props) => {
         password: password,
       }),
     });
+
 
     if (!resp.ok) throw Error("There was a problem in the signup request");
 

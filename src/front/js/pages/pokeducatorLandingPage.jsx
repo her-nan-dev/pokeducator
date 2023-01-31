@@ -42,6 +42,7 @@ function PokeducatorLandingPage() {
         </div>
       </div>
 
+
       <div className="row mt-3">
         <div className="col-sm-4">
           <div className="d-flex justify-content-center">
@@ -99,12 +100,15 @@ function PokeducatorLandingPage() {
         </div>
       </div>
       {/* <div className="row margin">
+
           <div className="col-md-4 divPadre2">
             <div className="image-box1 divFotoPodio">
               {store.votes_pokemons[1] ? (
                 <a href={`/fusioninfo/${store.votes_pokemons[1]?.pokemon_id}`}>
                   <img
+
                     className="rounded-circle d-flex align-items-center div_evolucion"
+
                     src={store.votes_pokemons[1]?.img}
                     alt="guardería Pokémon en Pokémon Negro y Blanco"
                   />
@@ -155,6 +159,7 @@ function PokeducatorLandingPage() {
             </div>
           </div>
         </div> */}
+
 
       <div className="equipos">
         <div className="row teamRow justify-content-center">
