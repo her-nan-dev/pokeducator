@@ -228,32 +228,31 @@ const PokeducatorFusion = () => {
 
     actions.addfus(pokeFus);
 
-    const resp = fetch(
-      "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createPokemonFusion",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          group_name: Fus_group_name,
-          height: height,
-          weight: weight,
-          ps: ps,
-          atk: atk,
-          defens: defens,
-          sp_defens: sp_defens,
-          sp_atk: sp_atk,
-          spd: spd,
-          img: url,
-          name: name3,
-          type: typesFus,
-          nature: natureFus.id,
-          ability: abilityFus.id,
-          learning: movesFus,
-          father: pokemon.id,
-          mom: pokemon2.id
-        }),
-      }
-    );
+
+    const resp = fetch(process.env.BACKEND_URL + "/api/createPokemonFusion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        group_name: Fus_group_name,
+        height: height,
+        weight: weight,
+        ps: ps,
+        atk: atk,
+        defens: defens,
+        sp_defens: sp_defens,
+        sp_atk: sp_atk,
+        spd: spd,
+        img: url,
+        name: name3,
+        type: typesFus,
+        nature: natureFus.id,
+        ability: abilityFus.id,
+        learning: movesFus,
+        father: pokemon.id,
+        mom: pokemon2.id,
+      }),
+    });
+
 
     setPokemon3(pokeFus);
     setTimeout(() => {
@@ -303,6 +302,7 @@ const PokeducatorFusion = () => {
     mov23 == null ? setMov23("fallo") : "";
     mov24 == null ? setMov24("fallo") : "";
   }
+
   let pokes = store.pokemon_data.slice(0, 151);
   let time = [2000, 3000, 4000, 5000];
   let randomtime = Math.floor(Math.random() * time.length);
@@ -461,6 +461,7 @@ const PokeducatorFusion = () => {
   setTimeout(() => {
     setLoad(false);
   }, time[randomtime]);
+
   return (
     <>
       {load ? (
@@ -468,158 +469,175 @@ const PokeducatorFusion = () => {
           <img className="centred img-fluid" src={loading} alt="Cargando..." />
         </div>
       ) : (
-        
         <div className="container align-items-center">
-          <div className={`row cartasFusion justify-content-center pkmn__container ${
+          <div
+            className={`row cartasFusion justify-content-center ${
               pokemon3 == null ? " d-none" : ""
-            } ${ani != null ? " anim2" : "anim"} `}>
-              <div class="pkmn__name text-white">
-            {pokemon ? (
-                    <h4 className="my-3 me-2 text-capitalize">{name3}</h4>
-                  ) : (
-                    ""
-                  )}</div>
-              <div class="pkmn__picture">
+            } ${ani != null ? " anim2" : "anim"} `}
+          >
+            <div className="card rounded col-md-5">
+              {/* Fusion Nombre */}
+              <div className="">
                 {pokemon3 ? (
-                    <img
-                      className="pkmn__png fusionFoto"
-                      src={pokemon3?.img}
-                      alt="foto pokemon"
-                    />
-                  ) : (
-                    ""
-                  )} 
-                			
+                  <h4 className="my-3 me-2 text-capitalize">{pokemon3.name}</h4>
+                ) : (
+                  ""
+                )}
               </div>
-              <div class="pkmn__info">
-					
-					<div class="text-center row d-flex">
-						<div class=" col-md-6">{tipos
-                      .filter((a) => pokemon3?.type.includes(a.tipo))
-                      .map((tipos) => {
-                        return (
-                          <img
-                            className="tipoImg mx-1"
-                            src={tipos.foto}
-                            alt="foto de tipo"
-                          />
-                        );
-                      })}<p class="text--small">Tipo</p></div>
-						<div class=" col-md-3">43<p class="text--small">Peso</p></div>
-						<div class=" col-md-3">4<p class="text--small">Altura</p></div>
-					</div>
-          <div className="row d-flex">
-            <div class="float-start text-center col-md-6">
-          {pokemon3 ? (
-                      <div className="stats_pokemon mt-3 mb-3 ">
-                        <div className="table-responsive rounded-3 tablaStatsFusion">
-                          <table className="table ">
-                            <thead>
-                              <th scope="col">Estadísticas</th>
-                            </thead>
-                            <tbody>
-                              {pokemon3?.stats?.map((objeto) => (
-                                <tr className="d-flex text-center align-items-center">
-                                  <td className="col-5 ">
-                                    {objeto.name == "atk"
-                                      ? "Ataque"
-                                      : objeto.name == "defens"
-                                      ? "Defensa"
-                                      : objeto.name == "ps"
-                                      ? "HP"
-                                      : objeto.name == "sp_atk"
-                                      ? "Ataque Esp."
-                                      : objeto.name == "sp_defens"
-                                      ? "Defensa Esp."
-                                      : objeto.name == "spd"
-                                      ? "Velocidad"
-                                      : ""}
-                                  </td>
-                                  <td className="col-5 mt-2">
-                                    <div className="progress">
-                                      <div
-                                        className="progress-bar"
-                                        role="progressbar"
-                                        style={{
-                                          width: `${objeto.base_stat / 2}%`,
-                                        }}
-                                      ></div>
-                                    </div>
-                                  </td>
-                                  <td className="col-2 fs-6">
-                                    {objeto.base_stat}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-					</div>
-					
-          <div className="text-center col-md-6 float-end marginFusion">
-						<div class="row my-3 rowFusion">
-							<div className="col-12">{mov31?.name} {tipos
-                      .filter((a) => mov31?.type.includes(a.tipo))
-                      .map((tipos) => {
-                        return (
-                          <img
-                            className="tipoImg mx-1 float-end"
-                            src={tipos.foto}
-                            alt="foto de tipo"
-                          />
-                        );
-                      })}</div>
-							
-						</div>
-            <div class="row my-3 rowFusion">
-							<div className="col-12">{mov32?.name} {tipos
-                      .filter((a) => mov31?.type.includes(a.tipo))
-                      .map((tipos) => {
-                        return (
-                          <img
-                            className="tipoImg mx-1 float-end"
-                            src={tipos.foto}
-                            alt="foto de tipo"
-                          />
-                        );
-                      })}</div>
-							
-						</div>
-            <div class="row my-3 rowFusion">
-							<div className="col-12">{mov33?.name} {tipos
-                      .filter((a) => mov31?.type.includes(a.tipo))
-                      .map((tipos) => {
-                        return (
-                          <img
-                            className="tipoImg mx-1 float-end"
-                            src={tipos.foto}
-                            alt="foto de tipo"
-                          />
-                        );
-                      })}</div>
-							
-						</div>
-            <div class="row my-3 rowFusion">
-							<div className="col-12">{mov34?.name} {tipos
-                      .filter((a) => mov31?.type.includes(a.tipo))
-                      .map((tipos) => {
-                        return (
-                          <img
-                            className="tipoImg mx-1 float-end"
-                            src={tipos.foto}
-                            alt="foto de tipo"
-                          />
-                        );
-                      })}</div>
-							
-						</div>
-					</div>
-          </div>
-				</div>
+              {/* Fusion Imagen */}
+              <div className="">
+                {pokemon3 ? (
+                  <img
+                    className="pkmn__png fusionFoto"
+                    src={pokemon3?.img}
+                    alt="foto pokemon"
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
+              {/* Fusion INFO */}
+              <div className="text-center row d-flex justify-content-center">
+                <div className=" col-md-6">
+                  {tipos
+                    .filter((a) => pokemon3?.type.includes(a.tipo))
+                    .map((tipos) => {
+                      return (
+                        <img
+                          className="tipoImg mx-1"
+                          src={tipos.foto}
+                          alt="foto de tipo"
+                        />
+                      );
+                    })}
+                  <p className="text--small">Tipo</p>
+                </div>
+              </div>
+              <div className="row d-flex">
+                {pokemon3 ? (
+                  <div className="stats_pokemon mt-3 mb-3 text-center">
+                    <div className="table-responsive">
+                      <table className="table align-middle">
+                        <thead>
+                          <tr>
+                            <th scope="col">Estadísticas</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {pokemon3?.stats?.map((objeto) => (
+                            <tr className="d-flex text-center align-items-center">
+                              <td className="col-3">
+                                {objeto.name == "atk"
+                                  ? "Ataque"
+                                  : objeto.name == "defens"
+                                  ? "Defensa"
+                                  : objeto.name == "ps"
+                                  ? "HP"
+                                  : objeto.name == "sp_atk"
+                                  ? "Ataque Esp."
+                                  : objeto.name == "sp_defens"
+                                  ? "Defensa Esp."
+                                  : objeto.name == "spd"
+                                  ? "Velocidad"
+                                  : ""}
+                              </td>
+                              <td className="col-6 mt-2">
+                                <div className="progress">
+                                  <div
+                                    className="progress-bar"
+                                    role="progressbar"
+                                    style={{
+                                      width: `${objeto.base_stat / 2}%`,
+                                    }}
+                                  ></div>
+                                </div>
+                              </td>
+                              <td className="col-3 fs-6">{objeto.base_stat}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div className="table-responsive">
+                      <table className="table align-middle">
+                        <thead>
+                          <tr>
+                            <th scope="col" colSpan="12">
+                              Movimientos
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className="border-end">
+                              {mov31?.name}
+                              {tipos
+                                .filter((a) => mov31?.type.includes(a.tipo))
+                                .map((tipos) => {
+                                  return (
+                                    <img
+                                      className="tipoImg mx-1"
+                                      src={tipos.foto}
+                                      alt="foto de tipo"
+                                    />
+                                  );
+                                })}
+                            </td>
+                            <td>
+                              {mov32?.name}
+                              {tipos
+                                .filter((a) => mov31?.type.includes(a.tipo))
+                                .map((tipos) => {
+                                  return (
+                                    <img
+                                      className="tipoImg mx-1"
+                                      src={tipos.foto}
+                                      alt="foto de tipo"
+                                    />
+                                  );
+                                })}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="border-end">
+                              {mov33?.name}
+                              {tipos
+                                .filter((a) => mov31?.type.includes(a.tipo))
+                                .map((tipos) => {
+                                  return (
+                                    <img
+                                      className="tipoImg mx-1"
+                                      src={tipos.foto}
+                                      alt="foto de tipo"
+                                    />
+                                  );
+                                })}
+                            </td>
+                            <td>
+                              {mov34?.name}
+                              {tipos
+                                .filter((a) => mov31?.type.includes(a.tipo))
+                                .map((tipos) => {
+                                  return (
+                                    <img
+                                      className="tipoImg mx-1"
+                                      src={tipos.foto}
+                                      alt="foto de tipo"
+                                    />
+                                  );
+                                })}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
           </div>
           <div className="row cartasFusion">
             <div className="col-md-5 text-center ">
@@ -676,7 +694,9 @@ const PokeducatorFusion = () => {
                         <div className="table-responsive rounded-3 tablaStatsFusion">
                           <table className="table ">
                             <thead>
-                              <th scope="col">Estadísticas</th>
+                              <tr>
+                                <th scope="col">Estadísticas</th>
+                              </tr>
                             </thead>
                             <tbody>
                               {pokemon?.stats?.map((objeto) => (
@@ -826,9 +846,9 @@ const PokeducatorFusion = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-2 text-center align-self-center">
-              <div class="pokeballFusionPage" onClick={() => Fusion()}>
-                <div class="pokeballFusionPage__button"></div>
+            <div className="col-md-2 text-center align-self-center">
+              <div className="pokeballFusionPage" onClick={() => Fusion()}>
+                <div className="pokeballFusionPage__button"></div>
               </div>
             </div>
             <div className="col-md-5 text-center ">
@@ -885,7 +905,9 @@ const PokeducatorFusion = () => {
                         <div className="table-responsive rounded-3 tablaStatsFusion">
                           <table className="table ">
                             <thead>
-                              <th scope="col">Estadísticas</th>
+                              <tr>
+                                <th scope="col">Estadísticas</th>
+                              </tr>
                             </thead>
                             <tbody>
                               {pokemon2?.stats?.map((objeto) => (
@@ -1016,7 +1038,7 @@ const PokeducatorFusion = () => {
                       </div>
                       <div className="col-md-6">
                         <div className={mov24 == "fallo" ? "fallo" : ""}>
-                        <Select
+                          <Select
                             placeholder={
                               mov24 == "fallo"
                                 ? "Seleccione Movimiento"

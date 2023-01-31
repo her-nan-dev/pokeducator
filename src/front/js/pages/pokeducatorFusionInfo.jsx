@@ -175,7 +175,7 @@ const PokeducatorFusionInfo = () => {
                     <a
                       href={
                         params.theid > 1
-                          ? `/fusioninfo/${parseInt(params.theid - 1)}`
+                          ? `/fusion/${parseInt(params.theid - 1)}`
                           : ""
                       }
                     >
@@ -191,7 +191,7 @@ const PokeducatorFusionInfo = () => {
                     <a
                       href={
                         params.theid < store.pokemon_fusion_data.length
-                          ? `/fusioninfo/${parseInt(params.theid) + 1}`
+                          ? `/fusion/${parseInt(params.theid) + 1}`
                           : ""
                       }
                     >
@@ -283,7 +283,6 @@ const PokeducatorFusionInfo = () => {
 
                 {/* DIV DRCH */}
                 <div className="col-md-6 d-flex flex-column m-0 info_pokemon">
-                  
                   {/* INFO ADICIONAL */}
                   <div
                     className={`bg-primary bg-gradient rounded-4 p-2 div_info_adicional`}

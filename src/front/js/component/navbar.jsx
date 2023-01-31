@@ -48,7 +48,7 @@ export const Navbar = () => {
               onMouseLeave={() => setDropdownVisible2(false)}
               className="nav-item position-relative"
             >
-              <Link className="nav-link dropdown-toggle" to="/pokemon">
+              <Link className="nav-link dropdown-toggle" to="/pokemons">
                 Pokémon
               </Link>
               {dorpdownVisible2 ? (
@@ -58,8 +58,9 @@ export const Navbar = () => {
                       Fusiones Pokémon
                     </Link>
                   </li>
-                  </ul>
-              ) : null}</li>
+                </ul>
+              ) : null}
+            </li>
             <li className="nav-item">
               <a className="nav-link" href="/habilidades">
                 Habilidades

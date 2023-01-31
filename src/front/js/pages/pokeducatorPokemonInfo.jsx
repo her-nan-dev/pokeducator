@@ -50,45 +50,45 @@ const PokeducatorPokemonInfo = () => {
 
   let tipoPokemon = store.single_pokemon_data.pokemon?.type.map((elemento) =>
     elemento == "normal" ? (
-      <img className="tipoImg mx-1" src={normal_img} alt="normal" />
+      <img className="tipoImg m-1" src={normal_img} alt="normal" />
     ) : elemento == "fighting" ? (
-      <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
+      <img className="tipoImg m-1" src={lucha_img} alt="normal" />
     ) : elemento == "flying" ? (
-      <img className="tipoImg mx-1" src={volador_img} alt="normal" />
+      <img className="tipoImg m-1" src={volador_img} alt="normal" />
     ) : elemento == "poison" ? (
-      <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
+      <img className="tipoImg m-1" src={veneno_img} alt="normal" />
     ) : elemento == "ground" ? (
-      <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
+      <img className="tipoImg m-1" src={tierra_img} alt="normal" />
     ) : elemento == "rock" ? (
-      <img className="tipoImg mx-1" src={roca_img} alt="normal" />
+      <img className="tipoImg m-1" src={roca_img} alt="normal" />
     ) : elemento == "ghost" ? (
-      <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
+      <img className="tipoImg m-1" src={fantasma_img} alt="normal" />
     ) : elemento == "steel" ? (
-      <img className="tipoImg mx-1" src={acero_img} alt="normal" />
+      <img className="tipoImg m-1" src={acero_img} alt="normal" />
     ) : elemento == "fire" ? (
-      <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
+      <img className="tipoImg m-1" src={fuego_img} alt="normal" />
     ) : elemento == "water" ? (
-      <img className="tipoImg mx-1" src={agua_img} alt="normal" />
+      <img className="tipoImg m-1" src={agua_img} alt="normal" />
     ) : elemento == "grass" ? (
-      <img className="tipoImg mx-1" src={planta_img} alt="normal" />
+      <img className="tipoImg m-1" src={planta_img} alt="normal" />
     ) : elemento == "electric" ? (
-      <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
+      <img className="tipoImg m-1" src={electrico_img} alt="normal" />
     ) : elemento == "psychic" ? (
-      <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
+      <img className="tipoImg m-1" src={psiquico_img} alt="normal" />
     ) : elemento == "ice" ? (
-      <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
+      <img className="tipoImg m-1" src={hielo_img} alt="normal" />
     ) : elemento == "dragon" ? (
-      <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
+      <img className="tipoImg m-1" src={dragon_img} alt="normal" />
     ) : elemento == "dark" ? (
-      <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
+      <img className="tipoImg m-1" src={siniestro_img} alt="normal" />
     ) : elemento == "fairy" ? (
-      <img className="tipoImg mx-1" src={hada_img} alt="normal" />
+      <img className="tipoImg m-1" src={hada_img} alt="normal" />
     ) : elemento == "unknown" ? (
-      <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
+      <img className="tipoImg m-1" src={desconocido_img} alt="normal" />
     ) : elemento == "shadow" ? (
-      <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
+      <img className="tipoImg m-1" src={sombra_img} alt="normal" />
     ) : elemento == "bug" ? (
-      <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
+      <img className="tipoImg m-1" src={bicho_img} alt="normal" />
     ) : (
       ""
     )
@@ -97,45 +97,45 @@ const PokeducatorPokemonInfo = () => {
   let tipoDebilidad = store.single_pokemon_data.pokemon?.weakness?.map(
     (elemento) =>
       elemento == "normal" ? (
-        <img className="tipoImg mx-1" src={normal_img} alt="normal" />
+        <img className="tipoImg m-1" src={normal_img} alt="normal" />
       ) : elemento == "fighting" ? (
-        <img className="tipoImg mx-1" src={lucha_img} alt="normal" />
+        <img className="tipoImg m-1" src={lucha_img} alt="normal" />
       ) : elemento == "flying" ? (
-        <img className="tipoImg mx-1" src={volador_img} alt="normal" />
+        <img className="tipoImg m-1" src={volador_img} alt="normal" />
       ) : elemento == "poison" ? (
-        <img className="tipoImg mx-1" src={veneno_img} alt="normal" />
+        <img className="tipoImg m-1" src={veneno_img} alt="normal" />
       ) : elemento == "ground" ? (
-        <img className="tipoImg mx-1" src={tierra_img} alt="normal" />
+        <img className="tipoImg m-1" src={tierra_img} alt="normal" />
       ) : elemento == "rock" ? (
-        <img className="tipoImg mx-1" src={roca_img} alt="normal" />
+        <img className="tipoImg m-1" src={roca_img} alt="normal" />
       ) : elemento == "ghost" ? (
-        <img className="tipoImg mx-1" src={fantasma_img} alt="normal" />
+        <img className="tipoImg m-1" src={fantasma_img} alt="normal" />
       ) : elemento == "steel" ? (
-        <img className="tipoImg mx-1" src={acero_img} alt="normal" />
+        <img className="tipoImg m-1" src={acero_img} alt="normal" />
       ) : elemento == "fire" ? (
-        <img className="tipoImg mx-1" src={fuego_img} alt="normal" />
+        <img className="tipoImg m-1" src={fuego_img} alt="normal" />
       ) : elemento == "water" ? (
-        <img className="tipoImg mx-1" src={agua_img} alt="normal" />
+        <img className="tipoImg m-1" src={agua_img} alt="normal" />
       ) : elemento == "grass" ? (
-        <img className="tipoImg mx-1" src={planta_img} alt="normal" />
+        <img className="tipoImg m-1" src={planta_img} alt="normal" />
       ) : elemento == "electric" ? (
-        <img className="tipoImg mx-1" src={electrico_img} alt="normal" />
+        <img className="tipoImg m-1" src={electrico_img} alt="normal" />
       ) : elemento == "psychic" ? (
-        <img className="tipoImg mx-1" src={psiquico_img} alt="normal" />
+        <img className="tipoImg m-1" src={psiquico_img} alt="normal" />
       ) : elemento == "ice" ? (
-        <img className="tipoImg mx-1" src={hielo_img} alt="normal" />
+        <img className="tipoImg m-1" src={hielo_img} alt="normal" />
       ) : elemento == "dragon" ? (
-        <img className="tipoImg mx-1" src={dragon_img} alt="normal" />
+        <img className="tipoImg m-1" src={dragon_img} alt="normal" />
       ) : elemento == "dark" ? (
-        <img className="tipoImg mx-1" src={siniestro_img} alt="normal" />
+        <img className="tipoImg m-1" src={siniestro_img} alt="normal" />
       ) : elemento == "fairy" ? (
-        <img className="tipoImg mx-1" src={hada_img} alt="normal" />
+        <img className="tipoImg m-1" src={hada_img} alt="normal" />
       ) : elemento == "unknown" ? (
-        <img className="tipoImg mx-1" src={desconocido_img} alt="normal" />
+        <img className="tipoImg m-1" src={desconocido_img} alt="normal" />
       ) : elemento == "shadow" ? (
-        <img className="tipoImg mx-1" src={sombra_img} alt="normal" />
+        <img className="tipoImg m-1" src={sombra_img} alt="normal" />
       ) : elemento == "bug" ? (
-        <img className="tipoImg mx-1" src={bicho_img} alt="normal" />
+        <img className="tipoImg m-1" src={bicho_img} alt="normal" />
       ) : (
         ""
       )
@@ -150,7 +150,7 @@ const PokeducatorPokemonInfo = () => {
     let weight_obtained = parseFloat(peso) * 0.1;
     return weight_obtained.toFixed(2);
   };
-  console.log(store.single_pokemon_data)
+
   return (
     <div className="containe container_section">
       {store.single_pokemon_data ? (
@@ -184,18 +184,18 @@ const PokeducatorPokemonInfo = () => {
                 </div>
 
                 <div className="col-sm-6 text-end">
-                {params.theid >= store.pokemon_data.length ? (
+                  {params.theid >= store.pokemon_data.length ? (
                     ""
                   ) : (
-                  <a
-                    href={
-                      params.theid < 1154
-                        ? `/pokemon/${parseInt(params.theid) + 1}`
-                        : ""
-                    }
-                  >
-                    <button className="buttonPokemonInfo">siguiente</button>
-                  </a>
+                    <a
+                      href={
+                        params.theid < 1154
+                          ? `/pokemon/${parseInt(params.theid) + 1}`
+                          : ""
+                      }
+                    >
+                      <button className="buttonPokemonInfo">siguiente</button>
+                    </a>
                   )}
                 </div>
               </div>
@@ -263,7 +263,7 @@ const PokeducatorPokemonInfo = () => {
                                       className="progress-bar"
                                       role="progressbar"
                                       style={{
-                                        width: `${objeto.base_stat / 1.5}%`,
+                                        width: `${objeto.base_stat / 1.2}%`,
                                       }}
                                     ></div>
                                   </div>
@@ -338,7 +338,11 @@ const PokeducatorPokemonInfo = () => {
                     <h4 className="fw-bold">TIPO</h4>
                     <div>{tipoPokemon}</div>
                   </div>
-                 
+                  <div className="bg-light p-2 rounded-4 div_tipo">
+                    <h4 className="fw-bold">DEBILIDADES</h4>
+                    <div className="m-1">{tipoDebilidad}</div>
+                  </div>
+
                   <div className="bg-light p-2 rounded-4 div_tipo">
                     <div>
                       <h4 className="fw-bold">EVOLUCIONES</h4>
@@ -349,7 +353,7 @@ const PokeducatorPokemonInfo = () => {
                           store.pokemon_data.map((objeto) =>
                             objeto.name == elemento ? (
                               <div
-                                className="rounded-circle text-center div_evolucion"
+                                className="rounded-circle d-flex align-items-center div_evolucion"
                                 style={{
                                   width: "150px",
                                   height: "150px",

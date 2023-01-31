@@ -16,20 +16,19 @@ const PokeducatorSignup = (props) => {
   let navigate = useNavigate();
   // hacer signup en actions y llamar a actions desde aqui
   const handleSignup = async () => {
-    const resp = await fetch(
-      "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          first_name: first_name,
-          last_name: last_name,
-          password: password,
-        }),
-      }
-    );
+
+    const resp = await fetch(process.env.BACKEND_URL + "/api/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        first_name: first_name,
+        last_name: last_name,
+        password: password,
+      }),
+    });
+
 
     if (!resp.ok) throw Error("There was a problem in the signup request");
 

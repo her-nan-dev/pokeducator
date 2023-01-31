@@ -25,66 +25,57 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       login: async (username, password) => {
         const store = getStore();
-
-
-        const resp =  fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/login/"+username+"/"+password
-     
-          
+        const resp = fetch(
+          process.env.BACKEND_URL + "/api/login/" + username + "/" + password
         )
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
-          
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_id", data.user_id);
- 
+
             setStore({ token: data.token });
             setStore({ user_id: data.user_id });
           });
-
       },
       votes: async () => {
         const store = getStore();
-        const resp =  fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/votes"
-        )
+
+        const resp = fetch(process.env.BACKEND_URL + "/api/votes")
+
+        
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
+
 
             let teams = [data.team1,data.team2,data.team3]
           
 
+
             setStore({ votes_pokemons: data.votes });
             setStore({ teams: teams})
           });
-
       },
       getProfile: () => {
-        
-        
         const token = localStorage.token;
-        console.log(token)
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/protected",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.token,
-            },
-           
-          }
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/protected", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        })
+
           .then((resp) => {
             return resp.json();
           })
           .then((data) => {
             data.msg ? "" : getActions().idStorage(localStorage.user_id);
-            
+
             return setStore({ user: data });
           });
           fetch(
@@ -108,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       pokemonFindDb: () => {
-        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154")
+        fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=905")
           .then((response) => response.json())
           .then((data) => {
             data.results.map((pokemon) => {
@@ -157,7 +148,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 evoluciones.chain.evolves_to[0]?.evolves_to[0]
                                   ?.species?.name
                               )
-                            :""
+                            : console.log(evoluciones.chain);
                         });
 
                       evolution = { evolution: evol };
@@ -204,8 +195,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (a.id < b.id) return -1;
           return 0;
         });
-
-        console.log(sortedData.length);
 
         sortedData.map((pokemon) => {
           let description = pokemon.description;
@@ -270,35 +259,34 @@ const getState = ({ getStore, getActions, setStore }) => {
             learning.push(mo[mo.length - 2]);
           });
 
-          const resp = fetch(
-            "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createPokemon",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                id: id,
-                name: pokemon.name,
-                img: img,
-                shiny: shiny,
-                type: types,
-                url: url,
-                weight: weight,
-                height: height,
-                ps: ps,
-                atk: atk,
-                sp_atk: sp_atk,
-                defens: defens,
-                sp_defens: sp_defens,
-                spd: spd,
-                description: description,
-                order: order,
-                learning: learning,
-                group_name: group_name,
-                evolution: evolution,
-                weakness: weakness,
-              }),
-            }
-          );
+
+          const resp = fetch(process.env.BACKEND_URL + "/api/createPokemon", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: id,
+              name: pokemon.name,
+              img: img,
+              shiny: shiny,
+              type: types,
+              url: url,
+              weight: weight,
+              height: height,
+              ps: ps,
+              atk: atk,
+              sp_atk: sp_atk,
+              defens: defens,
+              sp_defens: sp_defens,
+              spd: spd,
+              description: description,
+              order: order,
+              learning: learning,
+              group_name: group_name,
+              evolution: evolution,
+              weakness: weakness,
+            }),
+          });
+
         });
       },
 
@@ -327,29 +315,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                   img = data.sprites.default;
                 })
                 .finally(() => {
-                  fetch(
-                    "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createItem",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        id: id,
-                        name: name,
-                        description: description,
-                        img: img,
-                        cost: cost,
-                      }),
-                    }
-                  );
+
+                  fetch(process.env.BACKEND_URL + "/api/createItem", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      id: id,
+                      name: name,
+                      description: description,
+                      img: img,
+                      cost: cost,
+                    }),
+                  });
+
                 });
             });
           });
       },
 
       saveDbonStore: () => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/store"
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/store")
+
           .then((response) => response.json())
           .then((store) => {
             store.pokemons.map((poke) => {
@@ -379,10 +366,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       addAll: () => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/storeid/" +
-            1
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/storeid/" + 1)
+
           .then((response) => response.json())
           .then((store) => {
             console.log(store);
@@ -400,10 +386,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       FindOnePokemon: (pokemon_id) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/allmovabi/" +
-            pokemon_id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/allmovabi/" + pokemon_id)
+
           .then((response) => response.json())
           .then((pokemon) => {
             let stat = [];
@@ -416,63 +401,58 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       addequipofus: (pokemon_fusion_id, num) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/addequipofus",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              user_id: getStore().user_id,
-              pokemon_fusion_id: pokemon_fusion_id,
-              num: num,
-            }),
-          })
+
+        fetch(process.env.BACKEND_URL + "/api/addequipofus", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: getStore().user_id,
+            pokemon_fusion_id: pokemon_fusion_id,
+            num: num,
+          }),
+        });
       },
       addequipo: (pokemon_id, num) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/addequipo",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              user_id: getStore().user_id,
-              pokemon_id: pokemon_id,
-              num: num,
-            }),
-          })
+        fetch(process.env.BACKEND_URL + "/api/addequipo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: getStore().user_id,
+            pokemon_id: pokemon_id,
+            num: num,
+          }),
+        });
+
       },
-      
+
       FindOneFusion: (pokemon_id) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/allmovabifus/" +
-            pokemon_id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/allmovabifus/" + pokemon_id)
+
           .then((response) => response.json())
           .then((pokemon) => {
             let stat = [];
             for (let i in pokemon.pokemon.stats) {
               stat.push(pokemon.pokemon.stats[i]);
             }
-            console.log(pokemon)
+            console.log(pokemon);
             pokemon.pokemon.stats = stat;
             setStore({ single_fusion_data: pokemon });
           });
       },
       FindOneItem: (item_id) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/item/" +
-            item_id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/item/" + item_id)
+
           .then((response) => response.json())
           .then((item) => {
             setStore({ single_item_data: item.item });
           });
       },
       FindOneMove: (move_id) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/move/" +
-            move_id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/move/" + move_id)
+
           .then((response) => response.json())
           .then((move) => {
             setStore({ single_move_data: move.move });
@@ -488,13 +468,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       idStorage: (id) => {
         setStore({ user_id: id });
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/storeid/" +
-            id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/storeid/" + id)
+
           .then((response) => response.json())
           .then((store) => {
-
             let votes = [];
             store.votes.map((object) => {
               votes.push(object.pokemon_id);
@@ -505,23 +483,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
             setStore({ votes: votes });
             setStore({ favorites: favorites });
-            setStore({ equipos: store.equipos})
+            setStore({ equipos: store.equipos });
           });
       },
       addVote: async (pokemon_id) => {
         const vote = getStore().votes;
         let id = getStore().user_id;
-        const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/addvote",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              pokemon_id: pokemon_id,
-              user_id: id,
-            }),
-          }
-        );
+
+        const resp = await fetch(process.env.BACKEND_URL + "/api/addvote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pokemon_id: pokemon_id,
+            user_id: id,
+          }),
+        });
+
 
         const data = await resp.json();
         vote.push(data.vote);
@@ -532,21 +509,26 @@ const getState = ({ getStore, getActions, setStore }) => {
         let user_id = getStore().user_id;
 
         fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/deletevote/" +
+
+          process.env.BACKEND_URL +
+            "/api/deletevote/" +
+
             pokemon_id +
             "/" +
             user_id
         )
           .then((response) => response.json())
           .then((store) => {
-       
             setStore({ votes: store.votes });
           });
       },
       deletefavorite: async (pokemon_id) => {
         let user_id = getStore().user_id;
         fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/deletefavorite/" +
+
+          process.env.BACKEND_URL +
+            "/api/deletefavorite/" +
+
             pokemon_id +
             "/" +
             user_id
@@ -560,17 +542,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       addfavorite: async (pokemon_id, user_id) => {
         const favorite = getStore().favorites;
         let id = getStore().user_id;
-        const resp = await fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/addfavorite",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              pokemon_id: pokemon_id,
-              user_id: id,
-            }),
-          }
-        );
+
+        const resp = await fetch(process.env.BACKEND_URL + "/api/addfavorite", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            pokemon_id: pokemon_id,
+            user_id: id,
+          }),
+        });
+
 
         const data = await resp.json();
         favorite.push(data.vote);
@@ -578,10 +559,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         return true;
       },
       FindOneAbility: (ability_id) => {
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/ability/" +
-            ability_id
-        )
+
+        fetch(process.env.BACKEND_URL + "/api/ability/" + ability_id)
+
           .then((response) => response.json())
           .then((ability) => {
             console.log(ability);
@@ -610,7 +590,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       saveMoveonDb: () => {
         //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
-        fetch("https://pokeapi.co/api/v2/move/?offset=800&limit=100")
+        fetch("https://pokeapi.co/api/v2/move/?offset=200&limit=300")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
@@ -654,26 +634,25 @@ const getState = ({ getStore, getActions, setStore }) => {
               accuracy = data.accuracy;
             });
           setTimeout(() => {
-            fetch(
-              "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createMove",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  id: id,
-                  name: name,
-                  accuracy: accuracy,
-                  pp: pp,
-                  type: type,
-                  damage_class: damage_class,
-                  power: power,
-                  priority: priority,
-                  description: description,
-                  generation: generation,
-                  learning: learning,
-                }),
-              }
-            );
+
+            fetch(process.env.BACKEND_URL + "/api/createMove", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                id: id,
+                name: name,
+                accuracy: accuracy,
+                pp: pp,
+                type: type,
+                damage_class: damage_class,
+                power: power,
+                priority: priority,
+                description: description,
+                generation: generation,
+                learning: learning,
+              }),
+            });
+
           }, 500);
         });
       },
@@ -699,19 +678,18 @@ const getState = ({ getStore, getActions, setStore }) => {
                   increase_stat = data.increased_stat.name;
                 })
                 .finally(() => {
-                  fetch(
-                    "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createNature",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        id: id,
-                        name: name,
-                        decrease_stat: decrease_stat,
-                        increase_stat: increase_stat,
-                      }),
-                    }
-                  );
+
+                  fetch(process.env.BACKEND_URL + "/api/createNature", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      id: id,
+                      name: name,
+                      decrease_stat: decrease_stat,
+                      increase_stat: increase_stat,
+                    }),
+                  });
+
                 });
             });
           });
@@ -745,20 +723,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                   });
                 })
                 .finally(() => {
-                  fetch(
-                    "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/createAbility",
-                    {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        id: id,
-                        name: name,
-                        description: description,
-                        generation: generation,
-                        learning: learning,
-                      }),
-                    }
-                  );
+
+                  fetch(process.env.BACKEND_URL + "/api/createAbility", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      id: id,
+                      name: name,
+                      description: description,
+                      generation: generation,
+                      learning: learning,
+                    }),
+                  });
+
                 });
             });
           });
