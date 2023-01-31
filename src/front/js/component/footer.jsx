@@ -26,14 +26,9 @@ export const Footer = () => (
           <i className="fab fa-twitter"></i>
         </a>
         <a
-          href="https://www.instagram.com/invites/contact/?i=1egxiom6wtcbr&utm_content=prlkoed"
+          href="https://github.com/nanher94/pokeducator"
           className="me-4 link-secondary"
-        >
-          <i className="fab fa-instagram"></i>
-        </a>
-        <a
-          href="https://github.com/CristiianGB/pokeducator"
-          className="me-4 link-secondary"
+          target="_blank"
         >
           <i className="fab fa-github"></i>
         </a>
@@ -135,14 +130,13 @@ export const Footer = () => (
             {/* <!-- Links --> */}
             <h6 className="text-uppercase fw-bold mb-4">Contacta</h6>
             <p>
-              <i className="fas fa-home me-3 text-secondary"></i> Región de
-              Kanto, Pueblo Paleta
+              <i className="fas fa-home me-3 text-secondary"></i>
+              Región de Kanto, Pueblo Paleta
             </p>
             <p>
               <i className="fas fa-envelope me-3 text-secondary"></i>
               pokeducator@gmail.com
             </p>
-
             <p>
               <a className="text-reset" href="/soporte">
                 Ayuda
@@ -157,9 +151,7 @@ export const Footer = () => (
     {/* <!-- Section: Links  --> */}
 
     {/* <!-- Copyright --> style={{width: "18px"}}*/}
-    <div className="text-center p-4 footerCopy">
-      © 2021 Copyright
-    </div>
+    <div className="text-center p-4 footerCopy">© 2023 Copyright</div>
     {/* <!-- Copyright --> */}
   </footer>
 );

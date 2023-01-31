@@ -228,7 +228,6 @@ const PokeducatorFusion = () => {
 
     actions.addfus(pokeFus);
 
-
     const resp = fetch(process.env.BACKEND_URL + "/api/createPokemonFusion", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -252,7 +251,6 @@ const PokeducatorFusion = () => {
         mom: pokemon2.id,
       }),
     });
-
 
     setPokemon3(pokeFus);
     setTimeout(() => {
@@ -477,7 +475,7 @@ const PokeducatorFusion = () => {
           >
             <div className="card rounded col-md-5">
               {/* Fusion Nombre */}
-              <div className="">
+              <div className="text-center">
                 {pokemon3 ? (
                   <h4 className="my-3 me-2 text-capitalize">{pokemon3.name}</h4>
                 ) : (

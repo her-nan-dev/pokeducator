@@ -282,7 +282,7 @@ const PokeducatorFusionInfo = () => {
                 </div>
 
                 {/* DIV DRCH */}
-                <div className="col-md-6 d-flex flex-column m-0 info_pokemon">
+                <div className="col-md-6 d-flex flex-column m-0 info_pokemon justify-content-around">
                   {/* INFO ADICIONAL */}
                   <div
                     className={`bg-primary bg-gradient rounded-4 p-2 div_info_adicional`}
