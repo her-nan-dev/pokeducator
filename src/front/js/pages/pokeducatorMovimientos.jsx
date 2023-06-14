@@ -48,7 +48,7 @@ const PokeducatorMovimientos = () => {
     }, time[randomtime]);
   }, []);
 
-  console.log(store.move_data);
+  // console.log(store.move_data);
 
   return (
     <div className="App container align-items-center">

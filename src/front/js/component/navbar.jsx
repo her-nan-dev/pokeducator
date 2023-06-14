@@ -38,11 +38,6 @@ export const Navbar = () => {
           </a>
           {/* <!-- Left links --> */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link" href="/fusion">
-                Fusión
-              </a>
-            </li>
             <li
               onMouseEnter={() => setDropdownVisible2(true)}
               onMouseLeave={() => setDropdownVisible2(false)}
@@ -62,6 +57,11 @@ export const Navbar = () => {
               ) : null}
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/fusion">
+                Fusión
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/habilidades">
                 Habilidades
               </a>
@@ -79,7 +79,7 @@ export const Navbar = () => {
             <li
               onMouseEnter={() => setDropdownVisible(true)}
               onMouseLeave={() => setDropdownVisible(false)}
-              className="nav-item position-relative"
+              className="nav-item position-relative "
             >
               <Link className="nav-link dropdown-toggle" to="/wiki">
                 Wiki

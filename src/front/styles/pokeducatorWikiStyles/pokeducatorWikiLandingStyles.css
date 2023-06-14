@@ -1,22 +1,21 @@
 .divWiki {
-	background: url(https://www.cultture.com/pics/2019/09/10-lugares-que-queremos-visitar-en-el-mundo-pokemon-anime-5.jpg);
-	background-repeat: repeat;
-	background-attachment: fixed !important;
-	background-position: center top !important;
-	color: #fff;
-    height: 410px;
-    max-width: 1115px;
-    margin-left: 115px;
-    border-radius: 7px;
+  background: url(https://www.cultture.com/pics/2019/09/10-lugares-que-queremos-visitar-en-el-mundo-pokemon-anime-5.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  height: 410px;
+  border-radius: 7px;
 }
-.cardImgWiki{
-    width: 100%;
-    object-fit: cover;
-    height: 175px ;
+.cardImgWiki {
+  width: 100%;
+  object-fit: cover;
+  height: 175px;
 }
-.cardWiki{
-    max-width: 450px;
+.cardWiki {
+  max-width: 450px;
 }
-.cardWiki3{
-    min-width: 350px;
+.cardWiki3 {
+  min-width: 350px;
 }

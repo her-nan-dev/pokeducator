@@ -12,22 +12,19 @@
 .fondo {
   background-image: url(https://japeal.prestocdn.net/wordpress/wp-content/themes/total/PKM/pkmfoverlay3.png);
   background-repeat: no-repeat;
+  background-size: cover;
   padding: 5px;
- 
 }
-
-
 
 .imagenPodio,
 .imagenPodio1,
 .imagenPodio3 {
   transition: transform 0.3s;
- 
 }
-.wrapper { 
-  width:300px;
-  height:400px;
-  overflow:hidden;
+.wrapper {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
 }
 
 .imagenPodio:hover,
@@ -35,8 +32,6 @@
 .imagenPodio3:hover {
   transform: scale(1.1);
 }
-
-
 
 .divPadre1,
 .divPadre2,
@@ -52,16 +47,13 @@
   height: 250%;
   width: 120%;
   margin-top: -7em;
-  
 }
 
-
-
-
-.medalla2,.medalla3, .medalla1 {
+.medalla2,
+.medalla3,
+.medalla1 {
   max-width: 80px;
 }
-
 
 .fotoPerfilEquipos {
   margin-top: 10px;
@@ -85,7 +77,6 @@
   transform: scale(1.2);
 }
 
-
 .cardTeam {
   margin: 0px 10px 0px 10px;
 }
@@ -108,10 +99,10 @@
   );
 }
 
-.equipos{
-  margin-top:150px;
+.equipos {
+  margin-top: 150px;
 }
-.teamRow{
+.teamRow {
   margin-top: 25px;
   margin-bottom: 25px;
 }

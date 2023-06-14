@@ -91,7 +91,7 @@ const PokeducatorFusion = () => {
         ))
       : (name2 = pokemon2.name.slice(3, pokemon2.name.length));
     name3 = name1 + name2;
-    console.log(name3);
+    // console.log(name3);
     pokemon.type.map((object) => {
       types.push(object);
     });
@@ -110,7 +110,7 @@ const PokeducatorFusion = () => {
     group_name.map((object) => {
       Fus_group_name.indexOf(object) >= 0 ? "" : Fus_group_name.push(object);
     });
-    console.log(Fus_group_name);
+    // console.log(Fus_group_name);
     if (types.length > 2) {
       for (let i = 0; typesFus.length < 2; i++) {
         let num = Math.floor(Math.random() * types.length);
@@ -284,7 +284,7 @@ const PokeducatorFusion = () => {
     arr.map((object, i) => {
       object == null ? "" : object == "fallo" ? "" : count++;
     });
-    console.log(count);
+    // console.log(count);
     count > 1 ? PokeFus() : "";
 
     natur1 == null ? setNatur1("fallo") : "";

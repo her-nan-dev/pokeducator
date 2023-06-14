@@ -14,7 +14,7 @@ const PokeducatorObjetos = () => {
       if (load != false) {
         setLoad(false);
         setItems(store.item_data);
-        console.log(store.item_data);
+        // console.log(store.item_data);
       }
     }, 2000);
   }, []);

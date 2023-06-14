@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer" + token,
           },
         })
           .then((resp) => {
@@ -71,16 +71,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             return setStore({ user: data });
           });
-        fetch(
-          "https://3001-cristiiangb-pokeducator-orhyao9u3ig.ws-eu74.gitpod.io/api/lastvotes",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.token,
-            },
-          }
-        )
+        fetch(process.env.BACKEND_URL + "/api/lastvotes", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.token,
+          },
+        })
           .then((resp) => {
             return resp.json();
           })
@@ -555,7 +552,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       saveMoveonDb: () => {
         //hacer un bucle for aqui que el offset sea i y aumente de 50 en 50
-        fetch("https://pokeapi.co/api/v2/move/?offset=150&limit=300")
+        fetch("https://pokeapi.co/api/v2/move/?offset=300&limit=400")
           .then((response) => response.json())
           .then((data) => {
             return getActions().saveDb(data);
