@@ -9,7 +9,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
   module: {
@@ -40,8 +40,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        favicon: '4geeks.ico',
-        template: 'template.html'
+      
+        inject: true,
+        template: 'template.html',
+        filename: './index.html',
+      
     }),
     new Dotenv({ safe: true, systemvars: true })
   ]
