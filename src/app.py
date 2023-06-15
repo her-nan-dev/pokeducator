@@ -16,7 +16,7 @@ from flask_jwt_extended import JWTManager
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
-static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
+static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../dist/')
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
