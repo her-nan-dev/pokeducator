@@ -6,6 +6,9 @@ module.exports = merge(common, {
     output: {
         publicPath: '/'
     },
+    performance: {
+        hints: false,
+      },
     plugins: [
         new Dotenv({
             safe: true,
